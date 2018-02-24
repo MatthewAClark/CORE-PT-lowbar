@@ -112,7 +112,9 @@ describe('_', function () {
     it('returns -1 if element not found', function () {
       expect(_.indexOf([1, 2, 3, 4], 6)).to.equal(-1);
     });
-    
+    it('returns -1 when passed an empty array', function() {
+      expect(_.indexOf([], 6)).to.equal(-1);
+    });
   });
 });
 
@@ -133,7 +135,7 @@ describe('#filter', function() {
   });
 });
 
-describe.only('#reject', function() {
+describe('#reject', function() {
   const truthyFunc = function(x) {return x;};
   const evenFunc = function(x) {return x%2 === 0;};
   it('is a function', function() {
@@ -147,5 +149,22 @@ describe.only('#reject', function() {
   });
   it('returns an even set of numbers from an arr of mixed nums', function() {
     expect(_.reject([1,2,3,4,5,6], evenFunc)).to.eql([1,3,5]);
+  });
+});
+
+describe.only('#uniq', function() {
+  it('is a function', function() {
+    expect(_.uniq).to.be.a('function');
+  });
+  it('returns an array', function() {
+    expect(_.uniq([])).to.be.an('array');
+  });
+  it('returns an eql array if all items are unique', function() {
+    expect(_.uniq([1])).to.eql([1]);
+    expect(_.uniq([11,7])).to.eql([11,7]);
+  });
+  it('returns an array if all only unique items', function() {
+    expect(_.uniq([1,2,5,2,1,3,4,5,2])).to.eql([1,2,5,3,4]);
+    expect(_.uniq([11,7,11,12,7])).to.eql([11,7,12]);
   });
 });

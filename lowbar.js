@@ -86,4 +86,14 @@ _.reject = function(arr, func) {
   return newArr;
 };
 
+_.uniq = function(arr) {
+  let lookupArr = [];
+  for (let i = 0; i< arr.length; i++) {
+    if (_.indexOf(lookupArr, arr[i]) === -1) {
+      lookupArr.push(arr[i]);
+    }
+  }
+  return lookupArr;
+};
+
 module.exports = _;
