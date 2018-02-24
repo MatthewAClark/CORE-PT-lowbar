@@ -116,7 +116,7 @@ describe('_', function () {
   });
 });
 
-describe.only('#filter', function() {
+describe('#filter', function() {
   const truthyFunc = function(x) {return x;};
   const evenFunc = function(x) {return x%2 === 0;};
   it('is a function', function() {
@@ -130,5 +130,22 @@ describe.only('#filter', function() {
   });
   it('returns an even set of numbers from an arr of mixed nums', function() {
     expect(_.filter([1,2,3,4,5,6], evenFunc)).to.eql([2,4,6]);
+  });
+});
+
+describe.only('#reject', function() {
+  const truthyFunc = function(x) {return x;};
+  const evenFunc = function(x) {return x%2 === 0;};
+  it('is a function', function() {
+    expect(_.reject).to.be.a('function');
+  });
+  it('returns an array when passed a blank array', function() {
+    expect(_.reject([true,false],truthyFunc)).to.be.an('array');
+  });
+  it('returns only true values in an array of booleans', function() {
+    expect(_.reject([true,false],truthyFunc)).to.eql([false]);
+  });
+  it('returns an even set of numbers from an arr of mixed nums', function() {
+    expect(_.reject([1,2,3,4,5,6], evenFunc)).to.eql([1,3,5]);
   });
 });
