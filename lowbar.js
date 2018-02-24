@@ -1,7 +1,8 @@
 const _ = {};
 
-_.identity = function () {
+_.identity = function (x) {
   // your code here 
+  return x;
 };
 
 module.exports = _;
