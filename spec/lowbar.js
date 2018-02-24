@@ -169,7 +169,7 @@ describe('#uniq', function() {
   });
 });
 
-describe.only('#map', function() {
+describe('#map', function() {
   const multFunc = function(x) { return x * 5; };
   const sqrFunc = function(x) { return x * x; };
   it('is a function', function() {
@@ -182,5 +182,23 @@ describe.only('#map', function() {
   it('returns expected values when passed a function as second arg', function() {
     expect(_.map([1, 2, 3], multFunc)).to.be.eql([5, 10, 15]);
     expect(_.map([1, 2, 3], sqrFunc)).to.be.eql([1, 4, 9]);
+  });
+});
+
+describe.only('#contains', function() {
+  it('returns a boolean value', function() {
+    expect(_.contains([0], 0)).to.be.a('boolean');
+  });
+  it('returns true when array contains value', function() {
+    expect(_.contains([1,2,3], 2)).to.equal(true);
+  });
+  it('returns false when item is not in the array', function() {
+    expect(_.contains([4,5,6], 3)).to.equal(false);
+  });
+  it('returns true when string item is in the array', function() {
+    expect(_.contains([4,'str',6], 'str')).to.equal(true);
+  });
+  it('returns true if item is found in an obj', function() {
+    expect(_.contains({x: 4, y: 'str',z: 6}, 'str')).to.equal(true);
   });
 });

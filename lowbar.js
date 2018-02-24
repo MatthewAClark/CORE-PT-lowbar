@@ -107,4 +107,20 @@ _.map = function(arr, func) {
   return newArr;
 };
 
+_.contains = function(list, item) {
+  if (Array.isArray(list)) {
+    if(_.indexOf(list, item) > - 1){
+      return true;
+    }
+  } else if (list instanceof Object) {
+    for (let miniObj in list) {
+      if(list[miniObj] === item) {
+        return true;
+      }
+    }
+  }
+  
+  return false;
+};
+
 module.exports = _;
