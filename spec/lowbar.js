@@ -170,10 +170,17 @@ describe('#uniq', function() {
 });
 
 describe.only('#map', function() {
+  const multFunc = function(x) { return x * 5; };
+  const sqrFunc = function(x) { return x * x; };
   it('is a function', function() {
     expect(_.map).to.be.a('function');
   });
-  it('returns empty array', function() {
+  it('returns same array when no function is passed', function() {
     expect(_.map([1, 2, 3])).to.be.eql([1, 2, 3]);
+    expect(_.map([])).to.be.eql([]);
+  });
+  it('returns expected values when passed a function as second arg', function() {
+    expect(_.map([1, 2, 3], multFunc)).to.be.eql([5, 10, 15]);
+    expect(_.map([1, 2, 3], sqrFunc)).to.be.eql([1, 4, 9]);
   });
 });

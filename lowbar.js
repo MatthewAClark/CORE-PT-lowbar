@@ -96,10 +96,13 @@ _.uniq = function(arr) {
   return lookupArr;
 };
 
-_.map = function(arr) {
+_.map = function(arr, func) {
+  if(!func) {
+    return arr;
+  }
   let newArr = [];
   for(let i = 0; i < arr.length; i++) {
-    newArr.push(arr[i]);
+    newArr.push(func(arr[i]));
   }
   return newArr;
 };
