@@ -152,7 +152,7 @@ describe('#reject', function() {
   });
 });
 
-describe.only('#uniq', function() {
+describe('#uniq', function() {
   it('is a function', function() {
     expect(_.uniq).to.be.a('function');
   });
@@ -166,5 +166,14 @@ describe.only('#uniq', function() {
   it('returns an array if all only unique items', function() {
     expect(_.uniq([1,2,5,2,1,3,4,5,2])).to.eql([1,2,5,3,4]);
     expect(_.uniq([11,7,11,12,7])).to.eql([11,7,12]);
+  });
+});
+
+describe.only('#map', function() {
+  it('is a function', function() {
+    expect(_.map).to.be.a('function');
+  });
+  it('returns empty array', function() {
+    expect(_.map([1, 2, 3])).to.be.eql([1, 2, 3]);
   });
 });
