@@ -5,4 +5,8 @@ _.identity = function (x) {
   return x;
 };
 
+_.values = function(obj) {
+  return Object.values(obj);
+};
+
 module.exports = _;

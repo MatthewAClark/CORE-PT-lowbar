@@ -22,4 +22,16 @@ describe('_', function () {
       expect(_.identity({x:1, y:2})).to.be.eql({x:1, y:2});
     });
   });
+  describe('#values', function () {
+    it('is a function', function() {
+      expect(_.values).to.be.a('function');
+    });
+    it('Returns expected outputs types', function() {
+      expect(_.values({})).to.be.an('array');
+      expect(_.values({})).to.eql([]);
+    });
+    it('Returns array of values of the objects own properties', function() {
+      expect(_.values({one: 1, two: 2, three: 3})).to.eql([1,2,3]);
+    });
+  });
 });
