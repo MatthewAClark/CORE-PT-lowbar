@@ -14,10 +14,17 @@ _.values = function(obj) {
 };
 
 _.first = function(arr, items) {
-  if(items) {
+  if(!items && items != 0) {
     return arr[0];
   } else {
-    return [];
+    let newArr = [];
+    if(items > arr.length) {
+      items = arr.length;
+    }
+    for (let i = 0; i<items; i++) {
+      newArr.push(arr[i]);
+    }
+    return newArr;
   }
 };
 
