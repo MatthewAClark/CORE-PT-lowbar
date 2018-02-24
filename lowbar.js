@@ -28,4 +28,20 @@ _.first = function(arr, items) {
   }
 };
 
+_.last = function(arr, items) {
+  if(!items && items != 0) {
+    return arr[arr.length - 1];
+  } else {
+    let newArr = [];
+    if(items > arr.length) {
+      items = arr.length;
+    }
+    for (let i = arr.length - items; i<arr.length; i++) {
+      newArr.push(arr[i]);
+    }
+    return newArr;
+  }
+};
+
+
 module.exports = _;

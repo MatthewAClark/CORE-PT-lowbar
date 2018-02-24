@@ -34,7 +34,7 @@ describe('_', function () {
       expect(_.values({one: 1, two: 2, three: 3})).to.eql([1,2,3]);
     });
   });
-  describe.only('#first', function () {
+  describe('#first', function () {
     it('is a function', function() {
       expect(_.first).to.be.a('function');
     });
@@ -57,6 +57,23 @@ describe('_', function () {
     it('returns all items when second argument is greater than arr length', function() {
       expect(_.first([5,4,3,2,1],6)).to.eql([5,4,3,2,1]);
       expect(_.first([5,4,3,2,1],9)).to.eql([5,4,3,2,1]);
+    });
+  });
+  describe.only('#last', function () {
+    it('is a function', function() {
+      expect(_.last).to.be.a('function');
+    });
+    it('returns the last element of an array when only an array is passed', function () {
+      expect(_.last([3, 2, 1])).to.be.equal(1);
+    });
+    it('returns an aray when passed both arguments', function () {
+      expect(_.last([3, 2, 1], 2)).to.be.eql([2, 1]);
+      expect(_.last([3,2,1], 3)).to.eql([3,2,1]);
+      expect(_.last([5,4,3,2,1], 2)).to.eql([2,1]);
+    });
+    it('returns all items when second argument is greater than arr length', function() {
+      expect(_.last([5,4,3,2,1],6)).to.eql([5,4,3,2,1]);
+      expect(_.last([5,4,3,2,1],9)).to.eql([5,4,3,2,1]);
     });
   });
 });
