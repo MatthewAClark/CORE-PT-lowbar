@@ -98,7 +98,7 @@ describe('_', function () {
     });
   });
 
-  describe.only('#indexOf', function () {
+  describe('#indexOf', function () {
 
     it('is a function', function () {
       expect(_.indexOf).to.be.a('function');
@@ -113,5 +113,22 @@ describe('_', function () {
       expect(_.indexOf([1, 2, 3, 4], 6)).to.equal(-1);
     });
     
+  });
+});
+
+describe.only('#filter', function() {
+  const truthyFunc = function(x) {return x;};
+  const evenFunc = function(x) {return x%2 === 0;};
+  it('is a function', function() {
+    expect(_.filter).to.be.a('function');
+  });
+  it('returns an array when passed a blank array', function() {
+    expect(_.filter([true,false],truthyFunc)).to.be.an('array');
+  });
+  it('returns only true values in an array of booleans', function() {
+    expect(_.filter([true,false],truthyFunc)).to.eql([true]);
+  });
+  it('returns an even set of numbers from an arr of mixed nums', function() {
+    expect(_.filter([1,2,3,4,5,6], evenFunc)).to.eql([2,4,6]);
   });
 });
