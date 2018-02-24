@@ -80,7 +80,7 @@ describe('_', function () {
   function eachTest(x) {
     return x * 2;
   }
-  describe.only('#each', function () {
+  describe('#each', function () {
 
     it('is a function', function () {
       expect(_.each).to.be.a('function');
@@ -96,5 +96,22 @@ describe('_', function () {
       expect(_.each({ a: 1, b: 2, c: 3 }, _.identity)).to.be.eql([1, 2, 3]);
       expect(_.each({ a: 1, b: 2, c: 3 }, eachTest)).to.be.eql([2, 4, 6]);
     });
+  });
+
+  describe.only('#indexOf', function () {
+
+    it('is a function', function () {
+      expect(_.indexOf).to.be.a('function');
+    });
+    it('returns index in one element', function () {
+      expect(_.indexOf([1], 1)).to.equal(0);
+    });
+    it('returns index in third element of array', function () {
+      expect(_.indexOf([1, 2, 3, 4], 3)).to.equal(2);
+    });
+    it('returns -1 if element not found', function () {
+      expect(_.indexOf([1, 2, 3, 4], 6)).to.equal(-1);
+    });
+    
   });
 });
