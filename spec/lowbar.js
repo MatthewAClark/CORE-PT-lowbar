@@ -185,7 +185,7 @@ describe('#map', function() {
   });
 });
 
-describe.only('#contains', function() {
+describe('#contains', function() {
   it('is a function', function() {
     expect(_.contains).to.be.a('function');
   });
@@ -202,4 +202,16 @@ describe.only('#contains', function() {
     expect(_.contains({a:1, b:3, c:4}, 2)).to.be.equal(false);
   });
 
+});
+
+describe.only('#pluck', function() {
+  it('is a function', function() {
+    expect(_.pluck).to.be.a('function');
+  });
+  it('returns a property from one object', function() {
+    expect(_.pluck([{name: 'Peter', age: 42}], 'name')).to.be.eql(['Peter']);
+  });
+  it('returns an array of property items from an array of objects', function() {
+    expect(_.pluck([{name: 'Peter', age: 42}, {name: 'Susan', age: 56}, {name: 'Terry', age: 45}], 'name')).to.be.eql(['Peter', 'Susan', 'Terry']);
+  });
 });

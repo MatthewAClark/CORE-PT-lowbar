@@ -113,5 +113,13 @@ _.contains = function (obj, find) {
   return false;
 };
 
+_.pluck = function (obj, property) {
+  let result = [];
+  for (let i in obj) {
+    result.push(obj[i][property]);
+  }
+  return result;
+};
+
 
 module.exports = _;
