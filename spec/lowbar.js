@@ -170,7 +170,7 @@ describe('#uniq', function() {
 });
 
 const mapFunc = function(x) {return x * 2;};
-describe.only('#map', function() {
+describe('#map', function() {
   it('is a function', function() {
     expect(_.map).to.be.a('function');
   });
@@ -183,4 +183,19 @@ describe.only('#map', function() {
   it('returns an array when passed an object', function() {
     expect(_.map({a:1, b:2, c:3}, mapFunc)).to.be.eql([2, 4, 6]);
   });
+});
+
+describe.only('#contains', function() {
+  it('is a function', function() {
+    expect(_.contains).to.be.a('function');
+  });
+  it('Returns true/false when passed one array element that matches/not matching', function() {
+    expect(_.contains([1],1)).to.be.equal(true);
+    expect(_.contains([1],2)).to.be.equal(false);
+  });
+  it('returns matches on array with one matching element', function() {
+    expect(_.contains([1, 2, 3], 1)).to.be.equal(true);
+    expect(_.contains([1, 3, 4], 2)).to.be.equal(false);
+  });
+
 });
