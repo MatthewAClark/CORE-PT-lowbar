@@ -121,5 +121,17 @@ _.pluck = function (obj, property) {
   return result;
 };
 
+_.reduce = function (list, func, memo) {
+ 
+  if (list.length === 1) return list[0];
+  let result = list[0];
+  if (typeof memo === 'number') {
+    result = func(result, memo);
+  }
+  for (let i = 1; i < list.length; i++) {
+    result = func(result, list[i]);
+  }
+  return result;
+};
 
 module.exports = _;

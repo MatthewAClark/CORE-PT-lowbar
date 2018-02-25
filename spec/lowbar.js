@@ -112,106 +112,130 @@ describe('_', function () {
     it('returns -1 if element not found', function () {
       expect(_.indexOf([1, 2, 3, 4], 6)).to.equal(-1);
     });
-    it('returns -1 when passed an empty array', function() {
+    it('returns -1 when passed an empty array', function () {
       expect(_.indexOf([], 6)).to.equal(-1);
     });
   });
 });
 
-describe('#filter', function() {
-  const truthyFunc = function(x) {return x;};
-  const evenFunc = function(x) {return x%2 === 0;};
-  it('is a function', function() {
+describe('#filter', function () {
+  const truthyFunc = function (x) { return x; };
+  const evenFunc = function (x) { return x % 2 === 0; };
+  it('is a function', function () {
     expect(_.filter).to.be.a('function');
   });
-  it('returns an array when passed a blank array', function() {
-    expect(_.filter([true,false],truthyFunc)).to.be.an('array');
+  it('returns an array when passed a blank array', function () {
+    expect(_.filter([true, false], truthyFunc)).to.be.an('array');
   });
-  it('returns only true values in an array of booleans', function() {
-    expect(_.filter([true,false],truthyFunc)).to.eql([true]);
+  it('returns only true values in an array of booleans', function () {
+    expect(_.filter([true, false], truthyFunc)).to.eql([true]);
   });
-  it('returns an even set of numbers from an arr of mixed nums', function() {
-    expect(_.filter([1,2,3,4,5,6], evenFunc)).to.eql([2,4,6]);
+  it('returns an even set of numbers from an arr of mixed nums', function () {
+    expect(_.filter([1, 2, 3, 4, 5, 6], evenFunc)).to.eql([2, 4, 6]);
   });
 });
 
-describe('#reject', function() {
-  const truthyFunc = function(x) {return x;};
-  const evenFunc = function(x) {return x%2 === 0;};
-  it('is a function', function() {
+describe('#reject', function () {
+  const truthyFunc = function (x) { return x; };
+  const evenFunc = function (x) { return x % 2 === 0; };
+  it('is a function', function () {
     expect(_.reject).to.be.a('function');
   });
-  it('returns an array when passed a blank array', function() {
-    expect(_.reject([true,false],truthyFunc)).to.be.an('array');
+  it('returns an array when passed a blank array', function () {
+    expect(_.reject([true, false], truthyFunc)).to.be.an('array');
   });
-  it('returns only true values in an array of booleans', function() {
-    expect(_.reject([true,false],truthyFunc)).to.eql([false]);
+  it('returns only true values in an array of booleans', function () {
+    expect(_.reject([true, false], truthyFunc)).to.eql([false]);
   });
-  it('returns an even set of numbers from an arr of mixed nums', function() {
-    expect(_.reject([1,2,3,4,5,6], evenFunc)).to.eql([1,3,5]);
+  it('returns an even set of numbers from an arr of mixed nums', function () {
+    expect(_.reject([1, 2, 3, 4, 5, 6], evenFunc)).to.eql([1, 3, 5]);
   });
 });
 
-describe('#uniq', function() {
-  it('is a function', function() {
+describe('#uniq', function () {
+  it('is a function', function () {
     expect(_.uniq).to.be.a('function');
   });
-  it('returns an array', function() {
+  it('returns an array', function () {
     expect(_.uniq([])).to.be.an('array');
   });
-  it('returns an eql array if all items are unique', function() {
+  it('returns an eql array if all items are unique', function () {
     expect(_.uniq([1])).to.eql([1]);
-    expect(_.uniq([11,7])).to.eql([11,7]);
+    expect(_.uniq([11, 7])).to.eql([11, 7]);
   });
-  it('returns an array if all only unique items', function() {
-    expect(_.uniq([1,2,5,2,1,3,4,5,2])).to.eql([1,2,5,3,4]);
-    expect(_.uniq([11,7,11,12,7])).to.eql([11,7,12]);
+  it('returns an array if all only unique items', function () {
+    expect(_.uniq([1, 2, 5, 2, 1, 3, 4, 5, 2])).to.eql([1, 2, 5, 3, 4]);
+    expect(_.uniq([11, 7, 11, 12, 7])).to.eql([11, 7, 12]);
   });
 });
 
-const mapFunc = function(x) {return x * 2;};
-describe('#map', function() {
-  it('is a function', function() {
+const mapFunc = function (x) { return x * 2; };
+describe('#map', function () {
+  it('is a function', function () {
     expect(_.map).to.be.a('function');
   });
-  it('returns same array that is passed into function', function() {
-    expect(_.map([1, 2, 3],_.identity)).to.be.eql([1, 2, 3]);
+  it('returns same array that is passed into function', function () {
+    expect(_.map([1, 2, 3], _.identity)).to.be.eql([1, 2, 3]);
   });
-  it('returns new array with result of a manipulating function', function() {
+  it('returns new array with result of a manipulating function', function () {
     expect(_.map([1, 2, 3], mapFunc)).to.be.eql([2, 4, 6]);
   });
-  it('returns an array when passed an object', function() {
-    expect(_.map({a:1, b:2, c:3}, mapFunc)).to.be.eql([2, 4, 6]);
+  it('returns an array when passed an object', function () {
+    expect(_.map({ a: 1, b: 2, c: 3 }, mapFunc)).to.be.eql([2, 4, 6]);
   });
 });
 
-describe('#contains', function() {
-  it('is a function', function() {
+describe('#contains', function () {
+  it('is a function', function () {
     expect(_.contains).to.be.a('function');
   });
-  it('Returns true/false when passed one array element that matches/not matching', function() {
-    expect(_.contains([1],1)).to.be.equal(true);
-    expect(_.contains([1],2)).to.be.equal(false);
+  it('Returns true/false when passed one array element that matches/not matching', function () {
+    expect(_.contains([1], 1)).to.be.equal(true);
+    expect(_.contains([1], 2)).to.be.equal(false);
   });
-  it('returns matches on array with one matching element', function() {
+  it('returns matches on array with one matching element', function () {
     expect(_.contains([1, 2, 3], 1)).to.be.equal(true);
     expect(_.contains([1, 3, 4], 2)).to.be.equal(false);
   });
-  it('returns matches on objects with one matching value', function() {
-    expect(_.contains({a:1, b:2, c:3}, 1)).to.be.equal(true);
-    expect(_.contains({a:1, b:3, c:4}, 2)).to.be.equal(false);
+  it('returns matches on objects with one matching value', function () {
+    expect(_.contains({ a: 1, b: 2, c: 3 }, 1)).to.be.equal(true);
+    expect(_.contains({ a: 1, b: 3, c: 4 }, 2)).to.be.equal(false);
   });
 
 });
 
-describe.only('#pluck', function() {
-  it('is a function', function() {
+describe('#pluck', function () {
+  it('is a function', function () {
     expect(_.pluck).to.be.a('function');
   });
-  it('returns a property from one object', function() {
-    expect(_.pluck([{name: 'Peter', age: 42}], 'name')).to.be.eql(['Peter']);
+  it('returns a property from one object', function () {
+    expect(_.pluck([{ name: 'Peter', age: 42 }], 'name')).to.be.eql(['Peter']);
   });
-  it('returns an array of property items from an array of objects', function() {
-    expect(_.pluck([{name: 'Peter', age: 42}, {name: 'Susan', age: 56}, {name: 'Terry', age: 45}], 'name')).to.be.eql(['Peter', 'Susan', 'Terry']);
+  it('returns an array of property items from an array of objects', function () {
+    expect(_.pluck([{ name: 'Peter', age: 42 }, { name: 'Susan', age: 56 }, { name: 'Terry', age: 45 }], 'name')).to.be.eql(['Peter', 'Susan', 'Terry']);
+  });
+});
+
+describe.only('#reduce', function () {
+  it('is a function', function () {
+    expect(_.reduce).to.be.a('function');
+  });
+  it('Returns same value if only one passed into function', function () {
+    expect(_.reduce([1])).to.be.equal(1);
+  });
+  it('Adds two values together when passed adding function with 2 element array', function () {
+    expect(_.reduce([1,2], function( memo, num ) {return memo + num;})).to.be.equal(3);
+  });
+  it('Adds three or more values together when passed adding function with 2 element array', function () {
+    expect(_.reduce([1,2,3], function( memo, num ) {return memo + num;})).to.be.equal(6);
+    expect(_.reduce([1,2,3, 7, 8, 9], function( memo, num ) {return memo + num;})).to.be.equal(30);
+  });
+  it('Add memo to the function', function () {
+    expect(_.reduce([1,2,3], function( memo, num ) {return memo + num;}, 0)).to.be.equal(6);
+    expect(_.reduce([1,2,3, 7, 8, 9], function( memo, num ) {return memo + num;}, 3)).to.be.equal(33);
+  });
+  it('Try a different function', function () {
+    expect(_.reduce([2,4,6], function( memo, num ) {return memo * num;}, 0)).to.be.equal(0);
+    expect(_.reduce([1,2,3, 7, 8, 9], function( memo, num ) {return memo * num;}, 3)).to.be.equal(9072);
   });
 });
