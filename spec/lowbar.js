@@ -197,5 +197,9 @@ describe.only('#contains', function() {
     expect(_.contains([1, 2, 3], 1)).to.be.equal(true);
     expect(_.contains([1, 3, 4], 2)).to.be.equal(false);
   });
+  it('returns matches on objects with one matching value', function() {
+    expect(_.contains({a:1, b:2, c:3}, 1)).to.be.equal(true);
+    expect(_.contains({a:1, b:3, c:4}, 2)).to.be.equal(false);
+  });
 
 });

@@ -106,9 +106,9 @@ _.map = function (obj, func) {
   return newArr;
 };
 
-_.contains = function (arr, find) {
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i] === find) return true;
+_.contains = function (obj, find) {
+  for (let i in obj) {
+    if (obj[i] === find) return true;
   }
   return false;
 };
