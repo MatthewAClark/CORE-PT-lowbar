@@ -169,11 +169,18 @@ describe('#uniq', function() {
   });
 });
 
+const mapFunc = function(x) {return x * 2;};
 describe.only('#map', function() {
   it('is a function', function() {
     expect(_.map).to.be.a('function');
   });
-  it('returns empty array', function() {
-    expect(_.map([1, 2, 3])).to.be.eql([1, 2, 3]);
+  it('returns same array that is passed into function', function() {
+    expect(_.map([1, 2, 3],_.identity)).to.be.eql([1, 2, 3]);
+  });
+  it('returns new array with result of a manipulating function', function() {
+    expect(_.map([1, 2, 3], mapFunc)).to.be.eql([2, 4, 6]);
+  });
+  it('returns an array when passed an object', function() {
+    expect(_.map({a:1, b:2, c:3}, mapFunc)).to.be.eql([2, 4, 6]);
   });
 });

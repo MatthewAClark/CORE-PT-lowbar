@@ -58,15 +58,15 @@ _.each = function (list, iteratee) {
 };
 
 _.indexOf = function (arr, val) {
-  for(let i = 0; i < arr.length; i++) {
-    if( arr[i] === val) {
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === val) {
       return i;
     }
   }
   return -1;
 };
 
-_.filter = function(arr, func) {
+_.filter = function (arr, func) {
   let newArr = [];
   for (let i = 0; i < arr.length; i++) {
     if (func(arr[i])) {
@@ -76,7 +76,7 @@ _.filter = function(arr, func) {
   return newArr;
 };
 
-_.reject = function(arr, func) {
+_.reject = function (arr, func) {
   let newArr = [];
   for (let i = 0; i < arr.length; i++) {
     if (!func(arr[i])) {
@@ -86,9 +86,9 @@ _.reject = function(arr, func) {
   return newArr;
 };
 
-_.uniq = function(arr) {
+_.uniq = function (arr) {
   let lookupArr = [];
-  for (let i = 0; i< arr.length; i++) {
+  for (let i = 0; i < arr.length; i++) {
     if (_.indexOf(lookupArr, arr[i]) === -1) {
       lookupArr.push(arr[i]);
     }
@@ -96,10 +96,12 @@ _.uniq = function(arr) {
   return lookupArr;
 };
 
-_.map = function(arr) {
+_.map = function (obj, func) {
   let newArr = [];
-  for(let i = 0; i < arr.length; i++) {
-    newArr.push(arr[i]);
+  if (obj instanceof Object) {
+    for (let item in obj) {
+      newArr.push(func(obj[item]));
+    }
   }
   return newArr;
 };
