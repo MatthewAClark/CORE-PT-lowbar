@@ -216,7 +216,7 @@ describe('#pluck', function () {
   });
 });
 
-describe('#reduce', function () {
+describe.only('#reduce', function () {
   it('is a function', function () {
     expect(_.reduce).to.be.a('function');
   });
@@ -240,7 +240,7 @@ describe('#reduce', function () {
   });
 });
 
-describe.only('#every', function () {
+describe('#every', function () {
   it('is a function', function () {
     expect(_.every).to.be.a('function');
   });
@@ -258,5 +258,30 @@ describe.only('#every', function () {
   it('returns true or false on a mathematical function', function () {
     expect(_.every([2, 4, 5], function(num) { return num % 2 == 0;})).to.be.equal(false);
     expect(_.every([2, 4, 6], function(num) { return num % 2 == 0;})).to.be.equal(true);
+  });
+});
+
+describe('#some', function () {
+  it('is a function', function () {
+    expect(_.some).to.be.a('function');
+  });
+  it('returns true when passed one array element and a simple function', function () {
+    expect(_.some([true], function() { return true;})).to.equal(true);
+  });
+  it('returns true or false when passed a boolean 1 element array', function () {
+    expect(_.some([true], function(num) { return num;})).to.equal(true);
+    expect(_.some([false], function(num) { return num;})).to.equal(false);
+  });
+  it('returns true if any element in a 3 element array is true', function () {
+    expect(_.some([true, true, true], function(num) { return num;})).to.equal(true);
+    expect(_.some([true, true, false], function(num) { return num;})).to.equal(true);
+    expect(_.some([false, true, false], function(num) { return num;})).to.equal(true);
+  });
+  it('returns false if all elements in a 3 element array is false', function () {
+    expect(_.some([false, false, false], function(num) { return num;})).to.equal(false);
+  });
+  it('returns true or false on a mathematical function', function () {
+    expect(_.some([2, 4, 5], function(num) { return num % 2 === 0;})).to.equal(true);
+    expect(_.some([3, 5, 9], function(num) { return num % 2 === 0;})).to.equal(false);
   });
 });

@@ -123,7 +123,7 @@ _.pluck = function (obj, property) {
 
 _.reduce = function (list, func, memo) {
 
-  if (list.length === 1) return list[0];
+  //if (list.length === 1) return list[0];
   let result = list[0];
   if (typeof memo === 'number') {
     result = func(result, memo);
@@ -135,10 +135,17 @@ _.reduce = function (list, func, memo) {
 };
 
 _.every = function (list, func) {
-  for ( let i = 0; i < list.length; i++) {
+  for (let i = 0; i < list.length; i++) {
     if (func(list[i]) === false) return false;
   }
   return true;
+};
+
+_.some = function (list, func) {
+  for (let i = 0; i < list.length; i++) {
+    if (func(list[i]) === true) return true;
+  }
+  return false;
 };
 
 module.exports = _;
