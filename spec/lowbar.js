@@ -216,7 +216,7 @@ describe('#pluck', function () {
   });
 });
 
-describe.only('#reduce', function () {
+describe('#reduce', function () {
   it('is a function', function () {
     expect(_.reduce).to.be.a('function');
   });
@@ -261,7 +261,7 @@ describe('#every', function () {
   });
 });
 
-describe('#some', function () {
+describe.only('#some', function () {
   it('is a function', function () {
     expect(_.some).to.be.a('function');
   });
