@@ -216,7 +216,7 @@ describe('#pluck', function () {
   });
 });
 
-describe.only('#reduce', function () {
+describe('#reduce', function () {
   it('is a function', function () {
     expect(_.reduce).to.be.a('function');
   });
@@ -224,18 +224,39 @@ describe.only('#reduce', function () {
     expect(_.reduce([1])).to.be.equal(1);
   });
   it('Adds two values together when passed adding function with 2 element array', function () {
-    expect(_.reduce([1,2], function( memo, num ) {return memo + num;})).to.be.equal(3);
+    expect(_.reduce([1, 2], function (memo, num) { return memo + num; })).to.be.equal(3);
   });
   it('Adds three or more values together when passed adding function with 2 element array', function () {
-    expect(_.reduce([1,2,3], function( memo, num ) {return memo + num;})).to.be.equal(6);
-    expect(_.reduce([1,2,3, 7, 8, 9], function( memo, num ) {return memo + num;})).to.be.equal(30);
+    expect(_.reduce([1, 2, 3], function (memo, num) { return memo + num; })).to.be.equal(6);
+    expect(_.reduce([1, 2, 3, 7, 8, 9], function (memo, num) { return memo + num; })).to.be.equal(30);
   });
   it('Add memo to the function', function () {
-    expect(_.reduce([1,2,3], function( memo, num ) {return memo + num;}, 0)).to.be.equal(6);
-    expect(_.reduce([1,2,3, 7, 8, 9], function( memo, num ) {return memo + num;}, 3)).to.be.equal(33);
+    expect(_.reduce([1, 2, 3], function (memo, num) { return memo + num; }, 0)).to.be.equal(6);
+    expect(_.reduce([1, 2, 3, 7, 8, 9], function (memo, num) { return memo + num; }, 3)).to.be.equal(33);
   });
   it('Try a different function', function () {
-    expect(_.reduce([2,4,6], function( memo, num ) {return memo * num;}, 0)).to.be.equal(0);
-    expect(_.reduce([1,2,3, 7, 8, 9], function( memo, num ) {return memo * num;}, 3)).to.be.equal(9072);
+    expect(_.reduce([2, 4, 6], function (memo, num) { return memo * num; }, 0)).to.be.equal(0);
+    expect(_.reduce([1, 2, 3, 7, 8, 9], function (memo, num) { return memo * num; }, 3)).to.be.equal(9072);
+  });
+});
+
+describe.only('#every', function () {
+  it('is a function', function () {
+    expect(_.every).to.be.a('function');
+  });
+  it('returns true when passed one array element and a simple function', function () {
+    expect(_.every([true], function() { return true;})).to.be.equal(true);
+  });
+  it('returns true or false when passed a boolean 1 element array', function () {
+    expect(_.every([true], function(num) { return num;})).to.be.equal(true);
+    expect(_.every([false], function(num) { return num;})).to.be.equal(false);
+  });
+  it('returns true if one element in a 3 element array is true', function () {
+    expect(_.every([true, true, true], function(num) { return num;})).to.be.equal(true);
+    expect(_.every([true, true, false], function(num) { return num;})).to.be.equal(false);
+  });
+  it('returns true or false on a mathematical function', function () {
+    expect(_.every([2, 4, 5], function(num) { return num % 2 == 0;})).to.be.equal(false);
+    expect(_.every([2, 4, 6], function(num) { return num % 2 == 0;})).to.be.equal(true);
   });
 });
